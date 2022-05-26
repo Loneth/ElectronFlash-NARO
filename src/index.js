@@ -1,9 +1,9 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
-const fs = require("fs");
 
-let win;
+let URL = "https://game.aq.com/game/";
 let pluginName;
+let win;
 
 switch (process.platform) {
   case "win32":
@@ -23,28 +23,27 @@ app.commandLine.appendSwitch(
 );
 app.commandLine.appendSwitch("ppapi-flash-version", "32.0.0.371");
 
-function createWindow() {
+const createWindow = () => {
   win = new BrowserWindow({
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: false,
-      devTools: false,
+      devTools: true,
       plugins: true,
     },
   });
-
   win.maximize();
-  win.loadURL("https://game.aq.com/game/");
-}
+  win.loadURL(URL);
+};
 
 app.whenReady().then(() => {
   createWindow();
 
-  app.on("activate", function () {
+  app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
 
-app.on("window-all-closed", function () {
+app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });

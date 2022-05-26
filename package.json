@@ -1,8 +1,8 @@
 {
-  "name": "electronflash3",
-  "productName": "electronflash3",
+  "name": "electronflash-naro",
+  "productName": "electronflash-naro",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Test",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -26,7 +26,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "electronflash3"
+            "name": "electronflash-naro"
           }
         },
         {
